@@ -1,0 +1,106 @@
+body {
+    font-family: "Poppins", sans-serif;
+}
+.card {
+    margin: 50px 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #292358;
+    border-radius: 18px;
+}
+.card-title {
+    color: #fddafa;
+}
+.card-subtitle {
+    color: #6d90db;
+}
+.iconsCurrently {
+    font-size: 50px;
+    color: #6dd8d8;
+}
+.iconsBottom {
+    font-size: 30px;
+    color: #6dd8d8;
+}
+#time {
+    color: #6d90db;
+    font-size: 15px;
+}
+
+#currentTemperatureBig {
+    font-size: 50px;
+    color: #fddafa;
+}
+#CF {
+    font-size: 20px;
+    color: #fddafa;
+    vertical-align: 20px;
+}
+#currentC,
+#currentF {
+    text-decoration: none;
+    color: #fddafa;
+}
+#currentC:hover,
+#currentF:hover {
+    color: #09d0cf;
+    transition: all 200ms ease-in-out;
+}
+
+/* test*/
+.globeContainer {
+    position: relative;
+    margin: 0 auto;
+    width: 230px;
+}
+#globe {
+    display: block;
+    width: 100%;
+}
+.middleLayer {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgb(0 0 0 / 47%);
+    backdrop-filter: blur(5px);
+    padding: 17px;
+    cursor: pointer;
+    border-radius: 0.25rem;
+}
+.middleLayer:hover {
+    opacity: 1;
+    transition: all 400ms ease-in-out;
+}
+
+.globeText {
+    color: white;
+    margin: 0 auto;
+}
+/*test ends*/
+
+span.precipitationCurrently {
+    font-size: 15px;
+    color: #6d90db;
+}
+span.smallTextsBottom {
+    color: #fddafa;
+}
+span.precipitation {
+    font-size: 10px;
+    color: #6d90db;
+}
+
+button.btn-secondary {
+    background: #09d0cf;
+    border-color: #09bebe;
+}
+button.btn-secondary:hover {
+    background: #6d90db;
+    border-color: #6383c9;
+}
+button.btn-secondary:focus {
+    background-color: #6383c9;
+    border-color: #6383c9;
+}
