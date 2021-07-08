@@ -45,6 +45,14 @@ body {
     color: #09d0cf;
     transition: all 200ms ease-in-out;
 }
+#openSourceLine{
+    font-size: 14px;
+    margin-left: 150px;
+    margin-top: -35px;
+}
+#openSourceLink{
+    text-decoration: none;
+}
 
 /* test*/
 .globeContainer {
