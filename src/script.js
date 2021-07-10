@@ -1,5 +1,5 @@
-let currentC;
-let currentF;
+let currentC = "–";
+let currentF = "–";
 let isCelsiusSelected = true;
 let apiKey = "a85784d2dae7d5a007ca536ecd5baadb";
 let units = "metric";
@@ -105,12 +105,16 @@ function chooseF(event) {
     event.preventDefault();
     document.querySelector("#currentTemperatureBig").innerHTML = currentF;
     isCelsiusSelected = false;
+    event.target.classList.add("selected");
+    document.querySelector("#currentC").classList.remove("selected");
 }
 
 function chooseC(event) {
     event.preventDefault();
     document.querySelector("#currentTemperatureBig").innerHTML = currentC;
     isCelsiusSelected = true;
+    event.target.classList.add("selected");
+    document.querySelector("#currentF").classList.remove("selected");
 }
 
 document.querySelector("#currentC").addEventListener("click", chooseC);

@@ -39,16 +39,17 @@ body {
 #currentF {
     text-decoration: none;
     color: #fddafa;
+    transition: all 200ms ease-in-out;
 }
 #currentC:hover,
-#currentF:hover {
+#currentF:hover,
+#currentC.selected,
+#currentF.selected {
     color: #09d0cf;
-    transition: all 200ms ease-in-out;
+    font-weight: 600;
+    font-size: 23px;
 }
-#currentC:not(:hover),
-#currentF:not(:hover) {
-    transition: all 200ms ease-in-out;
-}
+
 #openSourceLine {
     font-size: 14px;
 }
@@ -78,13 +79,10 @@ body {
     padding: 17px;
     cursor: pointer;
     border-radius: 0.25rem;
+    transition: all 300ms ease-in-out;
 }
 .middleLayer:hover {
     opacity: 1;
-    transition: all 300ms ease-in-out;
-}
-.middleLayer:not(:hover) {
-    transition: all 300ms ease-in-out;
 }
 
 .globeText {
@@ -108,15 +106,13 @@ span.precipitation {
 button.btn-secondary {
     background: #09d0cf;
     border-color: #09bebe;
+    transition: all 300ms ease-in-out;
 }
 button.btn-secondary:hover {
     background: #6d90db;
     border-color: #6383c9;
-    transition: all 300ms ease-in-out;
 }
-button.btn-secondary:not(:hover) {
-    transition: all 300ms ease-in-out;
-}
+
 button.btn-secondary:focus {
     background-color: #6383c9;
     border-color: #6383c9;
