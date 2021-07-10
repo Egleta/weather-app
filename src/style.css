@@ -45,11 +45,14 @@ body {
     color: #09d0cf;
     transition: all 200ms ease-in-out;
 }
-#openSourceLine{
-    font-size: 14px;
-    
+#currentC:not(:hover),
+#currentF:not(:hover) {
+    transition: all 200ms ease-in-out;
 }
-#openSourceLink{
+#openSourceLine {
+    font-size: 14px;
+}
+#openSourceLink {
     text-decoration: none;
 }
 
@@ -78,7 +81,10 @@ body {
 }
 .middleLayer:hover {
     opacity: 1;
-    transition: all 400ms ease-in-out;
+    transition: all 300ms ease-in-out;
+}
+.middleLayer:not(:hover) {
+    transition: all 300ms ease-in-out;
 }
 
 .globeText {
@@ -106,6 +112,10 @@ button.btn-secondary {
 button.btn-secondary:hover {
     background: #6d90db;
     border-color: #6383c9;
+    transition: all 300ms ease-in-out;
+}
+button.btn-secondary:not(:hover) {
+    transition: all 300ms ease-in-out;
 }
 button.btn-secondary:focus {
     background-color: #6383c9;
