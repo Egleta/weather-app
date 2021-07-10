@@ -6,29 +6,8 @@ let units = "metric";
 
 //Live clock
 
-let weekday = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-];
-let month = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-];
+let weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 function launchClockRefresher() {
     refreshCurrentTime();
@@ -38,11 +17,9 @@ function launchClockRefresher() {
 function refreshCurrentTime() {
     let now = new Date();
 
-    document.querySelector("#time").innerHTML = `${
-        month[now.getMonth()]
-    } ${now.getDate()} , ${weekday[now.getDay()]}, ${now.toLocaleTimeString(
-        "sv-SE"
-    )}`;
+    document.querySelector("#time").innerHTML = `${month[now.getMonth()]} ${now.getDate()} , ${
+        weekday[now.getDay()]
+    }, ${now.toLocaleTimeString("sv-SE")}`;
 }
 
 launchClockRefresher();
@@ -61,7 +38,7 @@ function showLocation(position) {
 
 function showCityAndTemperature(response) {
     document.querySelector("#city").innerHTML = response.data.name;
-    showTemperature(response);
+    showWeatherConditions(response);
 }
 
 function searchCity(event) {
@@ -74,10 +51,10 @@ function searchCity(event) {
 
 function getCurrentTemperature(city) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-    axios.get(apiUrl).then(showTemperature);
+    axios.get(apiUrl).then(showWeatherConditions);
 }
 
-function showTemperature(response) {
+function showWeatherConditions(response) {
     currentC = Math.round(response.data.main.temp);
     currentF = CtoF(currentC);
 
@@ -90,6 +67,9 @@ function showTemperature(response) {
     }
 
     document.querySelector("#currentTemperatureBig").innerText = temp;
+    document.querySelector("#weatherConditionsCurrently").innerText = response.data.weather[0].description;
+    document.querySelector("#humidityCurrently").innerText = response.data.main.humidity;
+    document.querySelector("#windCurrently").innerText = Math.round(response.data.wind.speed);
 }
 
 function CtoF(celsius) {

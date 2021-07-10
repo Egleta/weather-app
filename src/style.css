@@ -90,8 +90,10 @@ body {
     margin: 0 auto;
 }
 /*test ends*/
-
-span.precipitationCurrently {
+#weatherConditionsCurrently {
+    text-transform: capitalize;
+}
+.mainWeatherInfo {
     font-size: 15px;
     color: #6d90db;
 }

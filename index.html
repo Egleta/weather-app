@@ -12,15 +12,9 @@
             crossorigin="anonymous"
         />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap"
-            rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="src/style.css" />
-        <script
-            src="https://kit.fontawesome.com/a4cdfc7bfb.js"
-            crossorigin="anonymous"
-        ></script>
+        <script src="https://kit.fontawesome.com/a4cdfc7bfb.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
     <body>
@@ -29,9 +23,7 @@
                 <div class="card-body">
                     <div class="row mb-3">
                         <div class="col-7">
-                            <h4 class="card-title">
-                                Your Local Weather Forecast
-                            </h4>
+                            <h4 class="card-title">Your Local Weather Forecast</h4>
                         </div>
                         <div class="col ms-5">
                             <span id="time"></span>
@@ -53,12 +45,7 @@
                                     </div>
 
                                     <div class="col-2">
-                                        <button
-                                            type="submit"
-                                            class="btn btn-secondary"
-                                        >
-                                            Search
-                                        </button>
+                                        <button type="submit" class="btn btn-secondary">Search</button>
                                     </div>
                                 </div>
                             </form>
@@ -71,50 +58,30 @@
                                 <div class="col me-3">
                                     <div class="row align-items-center">
                                         <div class="col-6 pe-0 mt-3">
-                                            <span id="currentTemperatureBig"
-                                                >–</span
-                                            >
+                                            <span id="currentTemperatureBig">–</span>
                                             <span id="CF">
-                                                <a
-                                                    href=""
-                                                    id="currentC"
-                                                    class="selected"
-                                                    >°C</a
-                                                >
+                                                <a href="" id="currentC" class="selected">°C</a>
                                                 |
                                                 <a href="" id="currentF">°F</a>
                                             </span>
                                         </div>
                                         <div class="col-6">
-                                            <i
-                                                class="
-                                                    fas
-                                                    fa-cloud-sun
-                                                    iconsCurrently
-                                                "
-                                            ></i>
+                                            <i class="fas fa-cloud-sun iconsCurrently"></i>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <span class="precipitationCurrently"
-                                            >Precipitation: –%</span
-                                        >
-                                    </div>
-                                    <div class="row">
-                                        <span class="precipitationCurrently"
-                                            >Wind: – km/h</span
-                                        >
+                                    <div class="mainWeatherInfo">
+                                        <div>
+                                            <span id="weatherConditionsCurrently"></span>
+                                        </div>
+                                        <div>Humidity: <span id="humidityCurrently">–</span> %</div>
+                                        <div>Wind: <span id="windCurrently">–</span> m/s</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col pt-4">
                             <div class="globeContainer">
-                                <img
-                                    id="globe"
-                                    src="media/globesquare.gif"
-                                    alt="spinning globe"
-                                />
+                                <img id="globe" src="media/globesquare.gif" alt="spinning globe" />
                                 <div class="middleLayer">
                                     <p class="globeText">Get your location</p>
                                 </div>
@@ -127,8 +94,7 @@
                                 <div class="col-6 pe-0">
                                     <span class="smallTextsBottom">
                                         <strong>Mon</strong><br />
-                                        <span class="smallTemperaturesBottom"
-                                            >20</span
+                                        <span class="smallTemperaturesBottom">20</span
                                         ><span class="smallBottomCorF">°C</span>
                                     </span>
                                 </div>
@@ -137,9 +103,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <span class="precipitation"
-                                    >Precipitation: 20%</span
-                                >
+                                <span class="precipitation">Precipitation: 20%</span>
                             </div>
                         </div>
                         <div class="col me-3">
@@ -147,8 +111,7 @@
                                 <div class="col-6 pe-0">
                                     <span class="smallTextsBottom">
                                         <strong>Mon</strong><br />
-                                        <span class="smallTemperaturesBottom"
-                                            >20</span
+                                        <span class="smallTemperaturesBottom">20</span
                                         ><span class="smallBottomCorF">°C</span>
                                     </span>
                                 </div>
@@ -157,9 +120,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <span class="precipitation"
-                                    >Precipitation: 20%</span
-                                >
+                                <span class="precipitation">Precipitation: 20%</span>
                             </div>
                         </div>
                         <div class="col me-3">
@@ -167,8 +128,7 @@
                                 <div class="col-6 pe-0">
                                     <span class="smallTextsBottom">
                                         <strong>Mon</strong><br />
-                                        <span class="smallTemperaturesBottom"
-                                            >20</span
+                                        <span class="smallTemperaturesBottom">20</span
                                         ><span class="smallBottomCorF">°C</span>
                                     </span>
                                 </div>
@@ -177,9 +137,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <span class="precipitation"
-                                    >Precipitation: 20%</span
-                                >
+                                <span class="precipitation">Precipitation: 20%</span>
                             </div>
                         </div>
                         <div class="col me-3">
@@ -187,8 +145,7 @@
                                 <div class="col-6 pe-0">
                                     <span class="smallTextsBottom">
                                         <strong>Mon</strong><br />
-                                        <span class="smallTemperaturesBottom"
-                                            >20</span
+                                        <span class="smallTemperaturesBottom">20</span
                                         ><span class="smallBottomCorF">°C</span>
                                     </span>
                                 </div>
@@ -197,9 +154,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <span class="precipitation"
-                                    >Precipitation: 20%</span
-                                >
+                                <span class="precipitation">Precipitation: 20%</span>
                             </div>
                         </div>
                         <div class="col col-2-replaced">
@@ -207,8 +162,7 @@
                                 <div class="col-6 pe-0">
                                     <span class="smallTextsBottom">
                                         <strong>Mon</strong><br />
-                                        <span class="smallTemperaturesBottom"
-                                            >20</span
+                                        <span class="smallTemperaturesBottom">20</span
                                         ><span class="smallBottomCorF">°C</span>
                                     </span>
                                 </div>
@@ -217,21 +171,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <span class="precipitation"
-                                    >Precipitation: 20%</span
-                                >
+                                <span class="precipitation">Precipitation: 20%</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <p id="openSourceLine">
-                <a
-                    href="https://github.com/Egleta/weather-app"
-                    id="openSourceLink"
-                    target="_blank"
-                    >Open-source code</a
-                >
+                <a href="https://github.com/Egleta/weather-app" id="openSourceLink" target="_blank">Open-source code</a>
                 by Egle Taraskeviciute
             </p>
         </div>
