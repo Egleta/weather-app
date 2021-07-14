@@ -66,6 +66,9 @@ function showWeatherConditions(response) {
         temp = currentF;
     }
 
+    document
+        .querySelector("#bigIcon")
+        .setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     document.querySelector("#currentTemperatureBig").innerText = temp;
     document.querySelector("#weatherConditionsCurrently").innerText = response.data.weather[0].description;
     document.querySelector("#humidityCurrently").innerText = response.data.main.humidity;
