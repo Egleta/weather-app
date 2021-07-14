@@ -66,6 +66,7 @@ function showWeatherConditions(response) {
         temp = currentF;
     }
 
+    document.querySelector("#dayOrNight").innerText = stateOfTheDay(response.data.weather[0].icon);
     document
         .querySelector("#bigIcon")
         .setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
@@ -73,6 +74,14 @@ function showWeatherConditions(response) {
     document.querySelector("#weatherConditionsCurrently").innerText = response.data.weather[0].description;
     document.querySelector("#humidityCurrently").innerText = response.data.main.humidity;
     document.querySelector("#windCurrently").innerText = Math.round(response.data.wind.speed);
+}
+
+function stateOfTheDay(iconName) {
+    if (iconName.slice(iconName.length - 1) === "n") {
+        return "Night";
+    }
+
+    return "Day";
 }
 
 function CtoF(celsius) {
