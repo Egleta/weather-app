@@ -103,8 +103,8 @@ body {
 span.smallTextsBottom {
     color: #fddafa;
 }
-span.precipitation {
-    font-size: 10px;
+span.smallWind {
+    font-size: 12px;
     color: #6d90db;
 }
 

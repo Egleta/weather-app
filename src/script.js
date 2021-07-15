@@ -54,6 +54,39 @@ function getCurrentTemperature(city) {
     axios.get(apiUrl).then(showWeatherConditions);
 }
 
+function displayForecast() {
+    let forecastElement = document.querySelector("#forecast");
+
+    let forecastHTML = "";
+    let forecastDays = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+    forecastDays.forEach(function (day) {
+        forecastHTML =
+            forecastHTML +
+            `
+    <div class="col me-3">
+        <div class="row align-items-center">
+            <div class="col-6 pe-0">
+                <span class="smallTextsBottom">
+                    <strong>${day}</strong>
+                    <br />
+                    <span class="smallTemperaturesBottom">20</span>
+                    <span class="smallBottomCorF">°C</span>
+                </span>
+            </div>
+            <div class="col-6 ps-0">
+                <i class="fas fa-cloud-sun iconsBottom"></i>
+            </div>
+        </div>
+        <div class="row">
+            <span class="smallWind">Wind: 20m/s</span>
+        </div>
+    </div>;
+    `;
+    });
+
+    forecastElement.innerHTML = forecastHTML;
+}
+
 function showWeatherConditions(response) {
     currentC = Math.round(response.data.main.temp);
     currentF = CtoF(currentC);
@@ -74,13 +107,13 @@ function showWeatherConditions(response) {
     document.querySelector("#weatherConditionsCurrently").innerText = response.data.weather[0].description;
     document.querySelector("#humidityCurrently").innerText = response.data.main.humidity;
     document.querySelector("#windCurrently").innerText = Math.round(response.data.wind.speed);
+    displayForecast();
 }
 
 function stateOfTheDay(iconName) {
     if (iconName.slice(iconName.length - 1) === "n") {
         return "Night";
     }
-
     return "Day";
 }
 
