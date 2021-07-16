@@ -54,7 +54,12 @@ function getCurrentTemperature(city) {
     axios.get(apiUrl).then(showWeatherConditions);
 }
 
-function displayForecast() {
+function getForecast(coordinates) {
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+    axios.get(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
     let forecastElement = document.querySelector("#forecast");
 
     let forecastHTML = "";
@@ -63,31 +68,33 @@ function displayForecast() {
         forecastHTML =
             forecastHTML +
             `
-    <div class="col me-3">
-        <div class="row align-items-center">
-            <div class="col-6 pe-0">
-                <span class="smallTextsBottom">
-                    <strong>${day}</strong>
-                    <br />
-                    <span class="smallTemperaturesBottom">20</span>
-                    <span class="smallBottomCorF">°C</span>
-                </span>
-            </div>
-            <div class="col-6 ps-0">
-                <i class="fas fa-cloud-sun iconsBottom"></i>
-            </div>
-        </div>
-        <div class="row">
-            <span class="smallWind">Wind: 20m/s</span>
-        </div>
-    </div>;
-    `;
+            <div class="col me-3">
+                <div class="row align-items-center">
+                    <div class="col-6 pe-0">
+                        <span class="smallTextsBottom">
+                            <strong>${day}</strong>
+                            <br />
+                            <span class="smallTemperaturesBottom">20</span>
+                            <span class="smallBottomCorF">°C</span>
+                        </span>
+                    </div>
+                    <div class="col-6 ps-0">
+                        <i class="fas fa-cloud-sun iconsBottom"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="smallWind">Wind: 20m/s</span>
+                </div>
+            </div>;
+        `;
     });
 
     forecastElement.innerHTML = forecastHTML;
 }
 
 function showWeatherConditions(response) {
+    getForecast(response.data.coord);
+
     currentC = Math.round(response.data.main.temp);
     currentF = CtoF(currentC);
 
@@ -107,7 +114,7 @@ function showWeatherConditions(response) {
     document.querySelector("#weatherConditionsCurrently").innerText = response.data.weather[0].description;
     document.querySelector("#humidityCurrently").innerText = response.data.main.humidity;
     document.querySelector("#windCurrently").innerText = Math.round(response.data.wind.speed);
-    displayForecast();
+    //displayForecast();
 }
 
 function stateOfTheDay(iconName) {
