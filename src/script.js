@@ -60,11 +60,14 @@ function getForecast(coordinates) {
 }
 
 function displayForecast(response) {
+    let forecast = response.data.daily.slice(1, 6);
     let forecastElement = document.querySelector("#forecast");
 
     let forecastHTML = "";
-    let forecastDays = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-    forecastDays.forEach(function (day) {
+    forecast.forEach(function (forecastDay) {
+        let weekdayDate = new Date(forecastDay.dt * 1000);
+        let weekdayName = weekday[weekdayDate.getDay()].substr(0, 3);
+
         forecastHTML =
             forecastHTML +
             `
@@ -72,21 +75,23 @@ function displayForecast(response) {
                 <div class="row align-items-center">
                     <div class="col-6 pe-0">
                         <span class="smallTextsBottom">
-                            <strong>${day}</strong>
+                            <strong>${weekdayName}</strong>
                             <br />
-                            <span class="smallTemperaturesBottom">20</span>
-                            <span class="smallBottomCorF">°C</span>
+                            <span class="smallTemperaturesBottom">${Math.round(forecastDay.temp.day)} °C</span>
                         </span>
                     </div>
                     <div class="col-6 ps-0">
-                        <i class="fas fa-cloud-sun iconsBottom"></i>
+                        <img class="smallIconsForecast" src="http://openweathermap.org/img/wn/${
+                            forecastDay.weather[0].icon
+                        }@2x.png"
+                        alt="Weather conditions"/>
                     </div>
                 </div>
                 <div class="row">
-                    <span class="smallWind">Wind: 20m/s</span>
+                    <span class="smallWind">Wind: ${Math.round(forecastDay.wind_speed)} m/s</span>
                 </div>
-            </div>;
-        `;
+            </div>
+            `;
     });
 
     forecastElement.innerHTML = forecastHTML;

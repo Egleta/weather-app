@@ -17,9 +17,8 @@ body {
     font-size: 50px;
     color: #6dd8d8;
 }
-.iconsBottom {
-    font-size: 30px;
-    color: #6dd8d8;
+.smallIconsForecast {
+    width: 55px;
 }
 #time {
     color: #6d90db;
