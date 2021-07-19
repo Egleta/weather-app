@@ -8,7 +8,7 @@ body {
     border-radius: 18px;
 }
 .card-title {
-    color: #fddafa;
+    color: #fcf1fb;
 }
 .card-subtitle {
     color: #6d90db;
@@ -27,17 +27,17 @@ body {
 
 #currentTemperatureBig {
     font-size: 50px;
-    color: #fddafa;
+    color: #fcf1fb;
 }
 #CF {
     font-size: 20px;
-    color: #fddafa;
+    color: #fcf1fb;
     vertical-align: 20px;
 }
 #currentC,
 #currentF {
     text-decoration: none;
-    color: #fddafa;
+    color: #fcf1fb;
     transition: all 200ms ease-in-out;
 }
 #currentC:hover,
@@ -112,7 +112,7 @@ body {
 }
 
 span.smallTextsBottom {
-    color: #fddafa;
+    color: #fcf1fb;
 }
 .smallConditions {
     font-size: 12px;
