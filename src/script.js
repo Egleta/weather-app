@@ -32,20 +32,12 @@ function showLocation(position) {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-
-    axios.get(apiUrl).then(showCityAndTemperature);
-}
-
-function showCityAndTemperature(response) {
-    document.querySelector("#city").innerHTML = response.data.name;
-    showWeatherConditions(response);
+    axios.get(apiUrl).then(showWeatherConditions);
 }
 
 function searchCity(event) {
     event.preventDefault();
     let searchInput = document.querySelector("#exampleInputEmail1").value;
-    document.querySelector("#city").innerHTML = searchInput;
-
     getCurrentTemperature(searchInput);
 }
 
@@ -63,6 +55,11 @@ function displayForecast(response) {
     let forecast = response.data.daily.slice(1, 6);
     let forecastElement = document.querySelector("#forecast");
 
+    let isCSelectedClass = "";
+    if (isCelsiusSelected) {
+        isCSelectedClass = "cSelected";
+    }
+
     let forecastHTML = "";
     forecast.forEach(function (forecastDay) {
         let weekdayDate = new Date(forecastDay.dt * 1000);
@@ -74,10 +71,11 @@ function displayForecast(response) {
             <div class="col me-3">
                 <div class="row align-items-center">
                     <div class="col-6 pe-0">
-                        <span class="smallTextsBottom">
+                        <span class="smallTextsBottom ${isCSelectedClass}">
                             <strong>${weekdayName}</strong>
                             <br />
-                            <span class="smallTemperaturesBottom">${Math.round(forecastDay.temp.day)} °C</span>
+                            <span class="smallTemperaturesBottom smallC">${Math.round(forecastDay.temp.day)} °C</span>
+                            <span class="smallTemperaturesBottom smallF">${CtoF(forecastDay.temp.day)} °F</span>
                         </span>
                     </div>
                     <div class="col-6 ps-0">
@@ -87,8 +85,10 @@ function displayForecast(response) {
                         alt="Weather conditions"/>
                     </div>
                 </div>
-                <div class="row">
-                    <span class="smallWind">Wind: ${Math.round(forecastDay.wind_speed)} m/s</span>
+                <div class="row smallConditions">
+                <span>Humidity: ${forecastDay.humidity} %</span>
+                    <span>Wind: ${Math.round(forecastDay.wind_speed)} m/s</span>
+
                 </div>
             </div>
             `;
@@ -98,6 +98,8 @@ function displayForecast(response) {
 }
 
 function showWeatherConditions(response) {
+    document.querySelector("#city").innerHTML = response.data.name;
+
     getForecast(response.data.coord);
 
     currentC = Math.round(response.data.main.temp);
@@ -144,6 +146,13 @@ function chooseF(event) {
     isCelsiusSelected = false;
     event.target.classList.add("selected");
     document.querySelector("#currentC").classList.remove("selected");
+
+    document.querySelectorAll(".smallC").forEach(function (temp) {
+        temp.style.display = "none";
+    });
+    document.querySelectorAll(".smallF").forEach(function (temp) {
+        temp.style.display = "inline";
+    });
 }
 
 function chooseC(event) {
@@ -152,6 +161,13 @@ function chooseC(event) {
     isCelsiusSelected = true;
     event.target.classList.add("selected");
     document.querySelector("#currentF").classList.remove("selected");
+
+    document.querySelectorAll(".smallF").forEach(function (temp) {
+        temp.style.display = "none";
+    });
+    document.querySelectorAll(".smallC").forEach(function (temp) {
+        temp.style.display = "inline";
+    });
 }
 
 document.querySelector("#currentC").addEventListener("click", chooseC);
@@ -161,4 +177,5 @@ document.querySelector(".middleLayer").addEventListener("click", clickOnGlobe);
 
 function clickOnGlobe() {
     navigator.geolocation.getCurrentPosition(showLocation);
+    document.querySelector("#exampleInputEmail1").value = null;
 }
