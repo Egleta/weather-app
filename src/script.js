@@ -26,6 +26,7 @@ launchClockRefresher();
 
 //Live clock ends here
 
+getCurrentWeather("Stockholm");
 navigator.geolocation.getCurrentPosition(showLocation);
 
 function showLocation(position) {
@@ -38,10 +39,10 @@ function showLocation(position) {
 function searchCity(event) {
     event.preventDefault();
     let searchInput = document.querySelector("#exampleInputEmail1").value;
-    getCurrentTemperature(searchInput);
+    getCurrentWeather(searchInput);
 }
 
-function getCurrentTemperature(city) {
+function getCurrentWeather(city) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(showWeatherConditions);
 }
